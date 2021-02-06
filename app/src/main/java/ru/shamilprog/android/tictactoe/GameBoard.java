@@ -19,6 +19,26 @@ public class GameBoard {
         }
     }
 
+    public void clear() {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                cells[i][j] = CellState.EMPTY;
+            }
+        }
+    }
+
+    public boolean isFull() {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (cells[i][j] == CellState.EMPTY) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
     public int getSize() {
         return size;
     }

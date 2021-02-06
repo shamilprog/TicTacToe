@@ -14,13 +14,28 @@ public class Game {
         currentMove = true;
     }
 
+    public GameBoard getBoard() {
+        return board;
+    }
+
+    public int incScoreOfPlayerX() {
+        return ++scoreOfPlayerX;
+    }
+
+    public int incScoreOfPlayerO() {
+        return ++scoreOfPlayerO;
+    }
+    /**
+     *
+     * @return what move was made
+     */
     public CellState makeMove() {
         CellState result = currentMove? CellState.X : CellState.O;
         currentMove = !currentMove;
         return result;
     }
 
-    public CellState checkForWin() {
+    public Outcome checkForWin() {
         int size = board.getSize();
 
         // check horizontally
@@ -33,8 +48,8 @@ public class Game {
                     break;
                 }
             }
-            if (flag) {
-                return cell;
+            if (flag && (cell != CellState.EMPTY)) {
+                return cell == CellState.X ? Outcome.X : Outcome.O;
             }
         }
 
@@ -48,40 +63,39 @@ public class Game {
                     break;
                 }
             }
-            if (flag) {
-                return cell;
+            if (flag && (cell != CellState.EMPTY)) {
+                return cell == CellState.X ? Outcome.X : Outcome.O;
             }
         }
 
         // check diagonals
-        for (int i = 0; i < size - 1; i++) {
-            boolean flag = true;
-
-            if (board.getCell(i, i) != board.getCell(i+1, i+1)) {
-                flag = false;
-                break;
-            }
-            if (flag) {
-                return board.getCell(i, i);
-            }
+        if (board.getCell(0, 0) == board.getCell(1, 1) &&
+            board.getCell(1, 1) == board.getCell(2, 2) &&
+            board.getCell(0, 0) != CellState.EMPTY) {
+            return board.getCell(0, 0) == CellState.X ? Outcome.X : Outcome.O;
         }
 
-        for (int i = 0; i < size - 1; i++) {
-            boolean flag = true;
-
-            if (board.getCell(i, size - i - 1) != board.getCell(i+1, size - i - 2)) {
-                flag = false;
-                break;
-            }
-            if (flag) {
-                return board.getCell(size - 1, 0);
-            }
+        if (board.getCell(2, 0) == board.getCell(1, 1) &&
+            board.getCell(1, 1) == board.getCell(0, 2) &&
+            board.getCell(2, 0) != CellState.EMPTY) {
+            return board.getCell(2, 0) == CellState.X ? Outcome.X : Outcome.O;
         }
 
-        return CellState.EMPTY;
+        if (board.isFull()) {
+            return Outcome.DRAW;
+        }
+
+        return Outcome.PLAYING;
+    }
+
+    public void reset() {
+        end();
+        scoreOfPlayerO = 0;
+        scoreOfPlayerX = 0;
     }
 
     public void end() {
-
+        board.clear();
+        currentMove = true;
     }
 }

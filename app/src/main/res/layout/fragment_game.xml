@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/player1_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/player2_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -33,11 +33,11 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/player1_textView"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
-            android:id="@+id/button17"
+            android:id="@+id/reset_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -69,7 +69,11 @@
                 android:layout_height="match_parent"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                app:backgroundTint="#EEEEEE" />
+                android:tag="00"
+                android:textColor="#000000"
+                android:textSize="60sp"
+                app:backgroundTint="#EEEEEE"
+                tools:text="X" />
 
             <Button
                 android:id="@+id/button01"
@@ -77,7 +81,11 @@
                 android:layout_height="match_parent"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                app:backgroundTint="#EEEEEE" />
+                android:tag="01"
+                android:textColor="#000000"
+                android:textSize="60sp"
+                app:backgroundTint="#EEEEEE"
+                tools:text="X" />
 
             <Button
                 android:id="@+id/button02"
@@ -85,7 +93,11 @@
                 android:layout_height="match_parent"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                app:backgroundTint="#EEEEEE" />
+                android:tag="02"
+                android:textColor="#000000"
+                android:textSize="60sp"
+                app:backgroundTint="#EEEEEE"
+                tools:text="X" />
         </TableRow>
 
         <TableRow
@@ -99,7 +111,11 @@
                 android:layout_height="match_parent"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                app:backgroundTint="#EEEEEE" />
+                android:tag="10"
+                android:textColor="#000000"
+                android:textSize="60sp"
+                app:backgroundTint="#EEEEEE"
+                tools:text="X" />
 
             <Button
                 android:id="@+id/button11"
@@ -107,7 +123,11 @@
                 android:layout_height="match_parent"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                app:backgroundTint="#EEEEEE" />
+                android:tag="11"
+                android:textColor="#000000"
+                android:textSize="60sp"
+                app:backgroundTint="#EEEEEE"
+                tools:text="X" />
 
             <Button
                 android:id="@+id/button12"
@@ -115,7 +135,11 @@
                 android:layout_height="match_parent"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                app:backgroundTint="#EEEEEE" />
+                android:tag="12"
+                android:textColor="#000000"
+                android:textSize="60sp"
+                app:backgroundTint="#EEEEEE"
+                tools:text="X" />
         </TableRow>
 
         <TableRow
@@ -129,7 +153,11 @@
                 android:layout_height="match_parent"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                app:backgroundTint="#EEEEEE" />
+                android:tag="20"
+                android:textColor="#000000"
+                android:textSize="60sp"
+                app:backgroundTint="#EEEEEE"
+                tools:text="X" />
 
             <Button
                 android:id="@+id/button21"
@@ -137,7 +165,11 @@
                 android:layout_height="match_parent"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                app:backgroundTint="#EEEEEE" />
+                android:tag="21"
+                android:textColor="#000000"
+                android:textSize="60sp"
+                app:backgroundTint="#EEEEEE"
+                tools:text="X" />
 
             <Button
                 android:id="@+id/button22"
@@ -145,7 +177,11 @@
                 android:layout_height="match_parent"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                app:backgroundTint="#EEEEEE" />
+                android:tag="22"
+                android:textColor="#000000"
+                android:textSize="60sp"
+                app:backgroundTint="#EEEEEE"
+                tools:text="X" />
         </TableRow>
 
     </TableLayout>
