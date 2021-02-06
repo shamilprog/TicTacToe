@@ -14,6 +14,11 @@ import androidx.fragment.app.Fragment;
 
 public class GameFragment extends Fragment {
 
+    private static final String BOARD_KEY = "board_key";
+    private static final String PLAYER1_KEY = "p1_key";
+    private static final String PLAYER2_KEY = "p2_key";
+    private static final String CURRENTMOVE_KEY = "move_key";
+
     private TextView player1ScoreTextView;
     private TextView player2ScoreTextView;
     private Button resetButton;
@@ -27,7 +32,14 @@ public class GameFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        game = new Game();
+        if (savedInstanceState != null) {
+            game = new Game((GameBoard)savedInstanceState.getSerializable(BOARD_KEY),
+                            savedInstanceState.getInt(PLAYER1_KEY),
+                            savedInstanceState.getInt(PLAYER2_KEY),
+                            savedInstanceState.getBoolean(CURRENTMOVE_KEY));
+        } else {
+            game = new Game();
+        }
     }
 
     @Nullable
@@ -38,6 +50,9 @@ public class GameFragment extends Fragment {
         player1ScoreTextView = (TextView) root.findViewById(R.id.player1_textView);
         player2ScoreTextView = (TextView) root.findViewById(R.id.player2_textView);
 
+        player1ScoreTextView.setText("Player 1: " + game.getScoreOfPlayerX());
+        player2ScoreTextView.setText("Player 2: " + game.getScoreOfPlayerO());
+
         resetButton = (Button) root.findViewById(R.id.reset_button);
 
         int size = game.getBoard().getSize();
@@ -47,6 +62,13 @@ public class GameFragment extends Fragment {
             for (int j = 0; j < buttonsBoard.length; j++) {
                 String tag = i + "" + j;
                 buttonsBoard[i][j] = (Button) root.findViewWithTag(tag);
+            }
+        }
+
+        updateButtons();
+
+        for (int i = 0; i < buttonsBoard.length; i++) {
+            for (int j = 0; j < buttonsBoard.length; j++) {
                 int finalI = i;
                 int finalJ = j;
                 buttonsBoard[i][j].setOnClickListener(new View.OnClickListener() {
@@ -100,13 +122,32 @@ public class GameFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(PLAYER1_KEY, game.getScoreOfPlayerX());
+        outState.putInt(PLAYER2_KEY, game.getScoreOfPlayerO());
+        outState.putBoolean(CURRENTMOVE_KEY, game.getCurrentMove());
+        outState.putSerializable(BOARD_KEY, game.getBoard());
+    }
+
     private void updateButtons() {
         int size = game.getBoard().getSize();
 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                buttonsBoard[i][j].setText("");
                 buttonsBoard[i][j].setEnabled(true);
+
+                switch (game.getBoard().getCell(i, j)) {
+                    case X:
+                        buttonsBoard[i][j].setText("X");
+                        break;
+                    case O:
+                        buttonsBoard[i][j].setText("O");
+                        break;
+                    default:
+                        buttonsBoard[i][j].setText("");
+                }
             }
         }
     }

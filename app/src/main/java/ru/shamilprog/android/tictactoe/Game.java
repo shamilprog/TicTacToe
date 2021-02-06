@@ -14,8 +14,23 @@ public class Game {
         currentMove = true;
     }
 
+    public Game(GameBoard board, int scoreOfPlayerX, int scoreOfPlayerO, boolean currentMove) {
+        this.board = board;
+        this.scoreOfPlayerX = scoreOfPlayerX;
+        this.scoreOfPlayerO = scoreOfPlayerO;
+        this.currentMove = currentMove;
+    }
+
     public GameBoard getBoard() {
         return board;
+    }
+
+    public int getScoreOfPlayerX() {
+        return scoreOfPlayerX;
+    }
+
+    public int getScoreOfPlayerO() {
+        return scoreOfPlayerO;
     }
 
     public int incScoreOfPlayerX() {
@@ -25,6 +40,11 @@ public class Game {
     public int incScoreOfPlayerO() {
         return ++scoreOfPlayerO;
     }
+
+    public boolean getCurrentMove() {
+        return currentMove;
+    }
+
     /**
      *
      * @return what move was made
@@ -98,4 +118,5 @@ public class Game {
         board.clear();
         currentMove = true;
     }
+
 }

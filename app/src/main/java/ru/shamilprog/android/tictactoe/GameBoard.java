@@ -1,6 +1,8 @@
 package ru.shamilprog.android.tictactoe;
 
-public class GameBoard {
+import java.io.Serializable;
+
+public class GameBoard implements Serializable {
 
     // Size of a game board (matrix)
     private int size;
