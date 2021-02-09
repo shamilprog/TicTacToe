@@ -80,8 +80,8 @@
                 tools:text="X" />
 
             <Button
-                style="@android:style/ButtonBar"
                 android:id="@+id/button01"
+                style="@android:style/ButtonBar"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="8dp"

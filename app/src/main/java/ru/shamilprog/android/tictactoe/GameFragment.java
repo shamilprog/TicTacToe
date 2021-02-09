@@ -1,6 +1,7 @@
 package ru.shamilprog.android.tictactoe;
 
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -137,6 +138,7 @@ public class GameFragment extends Fragment {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 buttonsBoard[i][j].setEnabled(true);
+                buttonsBoard[i][j].setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.button_text_size));
 
                 switch (game.getBoard().getCell(i, j)) {
                     case X:
